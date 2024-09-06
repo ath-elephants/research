@@ -1,5 +1,7 @@
 lightning_logs/
 LK_modified*
+synthetic_data*
+synthetic_df*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
