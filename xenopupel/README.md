@@ -18,10 +18,10 @@
 **f1**: macro: 0.6560; micro: 0.6969
 
 #### Test Metrics (чистый тест без аугм.):
-**accuracy**: 0.8394
-**precision**: macro: 0.7105, micro: 0.8394
-**recall**: macro: 0.7323; micro: 0.8394
-**f1**: macro: 0.7045; micro: 0.8394
+**accuracy**: 0.8394 \
+**precision**: macro: 0.7105, micro: 0.8394 \
+**recall**: macro: 0.7323; micro: 0.8394 \
+**f1**: macro: 0.7045; micro: 0.8394 
 
 
 # 05.09 Поиск пересечений в ответ-категория, аугментаиция, получение эмбеддингов через Navec, предсказания через LR
