@@ -6,35 +6,22 @@
 
 ### Метрики кроссвалидации
 #### Train Metrics:
-accuracy: 0.9695
-precision_macro: 0.9755
-recall_macro: 0.9710
-f1_macro: 0.9725
-precision_micro: 0.9695
-recall_micro: 0.9695
-f1_micro: 0.9695
+**accuracy**: 0.9695 \
+**precision**: macro: 0.9755; micro: 0.9695 \
+**recall**: macro: 0.9710; micro: 0.9695 \
+**f1**: macro: 0.9725; micro: 0.9695 
 
 #### Test Metrics (тест вместе с аугм. копиями)
-accuracy: 0.6969
-precision_macro: 0.7040
-recall_macro: 0.6677
-f1_macro: 0.6560
-precision_micro: 0.6969
-recall_micro: 0.6969
-f1_micro: 0.6969
+**accuracy**: 0.6969 \
+**precision**: macro: 0.7040; micro: 0.6969 \
+**recall**: macro: 0.6677; micro: 0.6969\
+**f1**: macro: 0.6560; micro: 0.6969
 
 #### Test Metrics (чистый тест без аугм.):
-accuracy: 0.8394
-precision_macro: 0.7105
-recall_macro: 0.7323
-f1_macro: 0.7045
-precision_micro: 0.8394
-recall_micro: 0.8394
-f1_micro: 0.8394
-
-
-
-
+**accuracy**: 0.8394
+**precision**: macro: 0.7105, micro: 0.8394
+**recall**: macro: 0.7323; micro: 0.8394
+**f1**: macro: 0.7045; micro: 0.8394
 
 
 # 05.09 Поиск пересечений в ответ-категория, аугментаиция, получение эмбеддингов через Navec, предсказания через LR
