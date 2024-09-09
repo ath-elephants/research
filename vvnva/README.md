@@ -1,3 +1,14 @@
+## Саммари по аугментациям 
+### с синтетикой
+
+| Augmentation                               | sber-gpt                                                                                                                             | navec                                                                                                                                | rubert                                                                                                                               |
+|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| shuffle_words, introduce_typo, add_or_remove_punctuation | **Accuracy**: 0.8436 <br> **Precision**: (macro: 0.8129, micro: 0.8436) <br> **Recall**: (macro: 0.8611, micro: 0.8436) <br> **F1 Score**: (macro: 0.8147, micro: 0.8436) | **Accuracy**: 0.7930 <br> **Precision**: (macro: 0.7049, micro: 0.7930) <br> **Recall**: (macro: 0.7784, micro: 0.7930) <br> **F1 Score**: (macro: 0.7118, micro: 0.7930) | **Accuracy**: 0.7672 <br> **Precision**: (macro: 0.6452, micro: 0.7672) <br> **Recall**: (macro: 0.7461, micro: 0.7672) <br> **F1 Score**: (macro: 0.6540, micro: 0.7672) |
+| "cointegrated/rut5-base-paraphraser"       | **Accuracy**: 0.8346 <br> **Precision**: (macro: 0.7833, micro: 0.8346) <br> **Recall**: (macro: 0.8212, micro: 0.8346) <br> **F1 Score**: (macro: 0.7804, micro: 0.8346) | **Accuracy**: 0.7683 <br> **Precision**: (macro: 0.6713, micro: 0.7683) <br> **Recall**: (macro: 0.7498, micro: 0.7683) <br> **F1 Score**: (macro: 0.6813, micro: 0.7683) | **Accuracy**: 0.7672 <br> **Precision**: (macro: 0.6452, micro: 0.7672) <br> **Recall**: (macro: 0.7461, micro: 0.7672) <br> **F1 Score**: (macro: 0.6540, micro: 0.7672) |
+| "Helsinki-NLP/opus-mt-ru-en"               | **Accuracy**: 0.8268 <br> **Precision**: (macro: 0.7827, micro: 0.8268) <br> **Recall**: (macro: 0.8244, micro: 0.8268) <br> **F1 Score**: (macro: 0.7790, micro: 0.8268) | **Accuracy**: 0.7672 <br> **Precision**: (macro: 0.6452, micro: 0.7672) <br> **Recall**: (macro: 0.7461, micro: 0.7672) <br> **F1 Score**: (macro: 0.6540, micro: 0.7672) | **Accuracy**: 0.7514 <br> **Precision**: (macro: 0.6879, micro: 0.7514) <br> **Recall**: (macro: 0.7462, micro: 0.7514) <br> **F1 Score**: (macro: 0.6809, micro: 0.7514) |
+
+### На оригинальных
+
 ## Яндекс Клауд
 Нам дали промокод на 5к, тарифы Yandex Cloud зависят от мощности ресурсов и времени использования.
 
