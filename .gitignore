@@ -1,7 +1,6 @@
 lightning_logs/
-LK_modified*
-synthetic_data*
-synthetic_df*
+*.xlsx
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
