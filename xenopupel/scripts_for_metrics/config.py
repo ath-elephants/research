@@ -1,11 +1,21 @@
 config = {
+    # Путь до трейна
+    'file_path': 'real_data_train.csv',
+
+    # Модель
     'model_name': 'llama3.1:8b',
     'temperature': 0.1,
+
+    # Эмбеддинги
     'embed_name': 'nomic-embed-text:v1.5',
-    'file_path': 'real_data_train.csv',
+    'is_embed_fake': True
+
+    # Параметры ретривера
     'search_type': 'mmr',
     'num_answers': 5,
     'lambda_mult': 0.25,
+
+    # Промпты
     'contextualize_q_system_prompt': """
         Given a chat history and the latest user question
         which might reference context in the chat history,
@@ -25,5 +35,5 @@ config = {
                 without any modifications. All responses must be in Russian.
     \n\n{context}
     """,
-    'is_embed_fake': True
+
 }
