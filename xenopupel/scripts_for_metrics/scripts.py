@@ -62,9 +62,7 @@ def get_rag_chain(
 ) -> RunnableWithMessageHistory:
     loader_train = _get_loader(file_path)
     embeddings = _get_embeddings(embed_name, is_embed_fake=is_embed_fake)
-    print('до llm')
     llm = _get_llm(model_name, temperature=temperature)
-    print('после llm')
     vectorstore = Chroma.from_documents(
         collection_name='question_answer_collection',
         documents=loader_train.load(),
