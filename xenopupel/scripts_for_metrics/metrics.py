@@ -52,6 +52,6 @@ def get_metrics(df, test_percentage=1):
 if __name__ == '__main__':
 
     df = pd.read_csv('real_data_test.csv')
-    metrics = get_metrics(df, test_percentage=0.01)
+    metrics = get_metrics(df, test_percentage=1) # test_percentage - используемая доля тестового датафрейма
     print(metrics)
 
