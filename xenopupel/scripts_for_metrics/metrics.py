@@ -7,6 +7,7 @@ from config import config
 import numpy as np
 from nltk.translate.bleu_score import sentence_bleu
 
+
 def similarity_score(answer1, answer2):
     return SequenceMatcher(None, answer1, answer2).ratio()
 
@@ -74,8 +75,7 @@ def get_metrics(df, test_percentage=1):
 
 
 if __name__ == '__main__':
-    file_path_test = 'real_data_test.csv'
+    file_path_test = 'LK_modified_11_09_clean_more_than_3_test.csv'
     df = pd.read_csv(file_path_test)
     metrics = get_metrics(df, test_percentage=1)  # test_percentage - используемая доля тестового датафрейма [0;1]
     print(metrics)
-
