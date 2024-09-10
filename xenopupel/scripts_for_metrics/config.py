@@ -1,19 +1,24 @@
 config = {
     # Путь до трейна
-    'file_path': 'real_data_train.csv',
+    'file_path': 'LK_modified_11_09_clean_more_than_3_train.csv',
 
     # Модель
     'model_name': 'llama3.1:8b',
-    'temperature': 0.1,
+    'temperature': 0.05,
 
     # Эмбеддинги
     'embed_name': 'nomic-embed-text:v1.5',
-    'is_embed_fake': True,
+    'is_embed_fake': False,
 
     # Параметры ретривера
     'search_type': 'mmr',
-    'num_answers': 5,
+    'k': 5,
     'lambda_mult': 0.25,
+    'score_threshold': 0.6,  # для search_type == similarity_score_threshold
+
+    # Сохранять вектора эмбеддингов?
+    'is_persist_dir' : False,
+    'persist_dir_path' : './vectorestore/',
 
     # Промпты
     'contextualize_q_system_prompt': """
