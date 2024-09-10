@@ -48,29 +48,52 @@ def get_session_history(session_id: str) -> BaseChatMessageHistory:
     return global_store[session_id]
 
 
+def get_vectorestore(is_persist_dir,
+                     persist_dir_path,
+                     loader_train,
+                     embeddings):
+    if is_persist_dir:
+        return Chroma.from_documents(
+            collection_name='question_answer_collection',
+            documents=loader_train.load(),
+            embedding=embeddings,
+            persist_directory=persist_dir_path
+        )
+    else:
+        return Chroma.from_documents(
+            collection_name='question_answer_collection',
+            documents=loader_train.load(),
+            embedding=embeddings,
+        )
+
+
 def get_rag_chain(
         model_name: str,
         temperature: float,
         embed_name: str,
         file_path: str,
         search_type: str,
-        num_answers: int,
+        k: int,
         lambda_mult: float,
         contextualize_q_system_prompt: str,
         system_prompt: str,
+        persist_dir_path: str,
+        score_threshold=0.8,
+        is_persist_dir=False,
         is_embed_fake=False,
 ) -> RunnableWithMessageHistory:
     loader_train = _get_loader(file_path)
     embeddings = _get_embeddings(embed_name, is_embed_fake=is_embed_fake)
     llm = _get_llm(model_name, temperature=temperature)
-    vectorstore = Chroma.from_documents(
-        collection_name='question_answer_collection',
-        documents=loader_train.load(),
-        embedding=embeddings,
-    )
+    vectorstore = get_vectorestore(is_persist_dir, persist_dir_path, loader_train, embeddings)
+    search_kwargs = {}
+    if search_type == 'mmr':
+        search_kwargs = {'k': k, 'lambda_mult': lambda_mult}
+    elif search_type == 'similarity_score_threshold':
+        search_kwargs = {'k': k, 'score_threshold': score_threshold}
     retriever = vectorstore.as_retriever(
         search_type=search_type,
-        search_kwargs={'num_answers': num_answers, 'lambda_mult': lambda_mult},
+        search_kwargs=search_kwargs,
     )
 
     contextualize_q_prompt = _get_chat_prompt(contextualize_q_system_prompt)
