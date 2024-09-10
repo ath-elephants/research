@@ -8,7 +8,7 @@ config = {
 
     # Эмбеддинги
     'embed_name': 'nomic-embed-text:v1.5',
-    'is_embed_fake': True
+    'is_embed_fake': True,
 
     # Параметры ретривера
     'search_type': 'mmr',
@@ -35,5 +35,4 @@ config = {
                 without any modifications. All responses must be in Russian.
     \n\n{context}
     """,
-
 }
