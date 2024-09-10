@@ -22,6 +22,7 @@
                           __/ (  | (  |
                           /__.-'|_|--|_|
 
+[почему микро метрики равны между собой](https://stackoverflow.com/questions/74440410/sklearn-evaluate-accuracy-precision-recall-f1-show-same-result?noredirect=1&lq=1)
 
 ## Яндекс Клауд
 Нам дали промокод на 5к, тарифы Yandex Cloud зависят от мощности ресурсов и времени использования.
