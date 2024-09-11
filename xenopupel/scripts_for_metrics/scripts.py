@@ -8,6 +8,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_community.document_loaders import CSVLoader
 from langchain_community.embeddings import FakeEmbeddings
+from more_itertools import chunked
 
 global_store = {}
 
@@ -53,18 +54,25 @@ def get_vectorestore(is_persist_dir,
                      loader_train,
                      embeddings):
     if is_persist_dir:
-        return Chroma.from_documents(
+        chroma_collection = Chroma(
             collection_name='question_answer_collection',
-            documents=loader_train.load(),
             embedding=embeddings,
-            persist_directory=persist_dir_path
+            persist_directory=persist_dir_path,
         )
     else:
-        return Chroma.from_documents(
+        chroma_collection = Chroma(
             collection_name='question_answer_collection',
-            documents=loader_train.load(),
             embedding=embeddings,
         )
+
+    documents = loader_train.load()
+    batch_size = 5400
+    batches = list(chunked(documents, batch_size))
+
+    for batch in batches:
+        chroma_collection.add_documents(documents=batch)
+
+    return chroma_collection
 
 
 def get_rag_chain(
