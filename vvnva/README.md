@@ -1,3 +1,15 @@
+### Прирост метрик на основе исходных данных без ситетики и аугментации - rubert:
+
+| Metric        | Без обработки       | -concat category  <br> -.str.lower()         |
+|---------------|---------------------|---------------------|
+| Accuracy      | 0.6108              | 0.7938              |
+| Precision     | macro: 0.4940, micro: 0.6108 | macro: 0.6029, micro: 0.7938 |
+| Recall        | macro: 0.4877, micro: 0.6108 | macro: 0.6112, micro: 0.7938 |
+| F1 Score      | macro: 0.4757, micro: 0.6108 | macro: 0.5934, micro: 0.7938 |
+
+
+
+
 ## Саммари по аугментациям 
 ### с синтетикой
 | Augmentation                                             | sber-gpt                                                                                                                                                                  | navec                                                                                                                                                                     | rubert                                                                                                                                                                    |
