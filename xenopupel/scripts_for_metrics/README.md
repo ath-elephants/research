@@ -1,8 +1,8 @@
 ## synth_no_aug, дефолтные параметры:
-'average_similarity_score': 0.5378277933070031,
-'average_levenshtein_similarity': 0.5641647351233865,
-'average_jaccard_similarity': 0.45478534600813675,
-'average_bleu_score': 0.4343468795510984
+'average_similarity_score': 0.5378277933070031, \
+'average_levenshtein_similarity': 0.5641647351233865, \
+'average_jaccard_similarity': 0.45478534600813675, \
+'average_bleu_score': 0.4343468795510984 
 
 ## Чистые данные, откинув <=3 классы
 
@@ -15,14 +15,14 @@
 
 ## Случайные ответы:
 
-test_synthetic_no_aug.csv:
-'average_similarity_score': 0.13457999885072489,
-'average_levenshtein_similarity': 0.18647395423123936,
-'average_jaccard_similarity': 0.041879182347742946,
+test_synthetic_no_aug.csv: \
+'average_similarity_score': 0.13457999885072489, \
+'average_levenshtein_similarity': 0.18647395423123936, \
+'average_jaccard_similarity': 0.041879182347742946, \
 'average_bleu_score': 0.0073593233482635995
 
-test_synthetic_aug.csv:
-'average_similarity_score': 0.13246022000712718,
-'average_levenshtein_similarity': 0.19154487555131322,
-'average_jaccard_similarity': 0.044492837472662784,
-'average_bleu_score': 0.00940852604646604
+test_synthetic_aug.csv: \
+'average_similarity_score': 0.13246022000712718, \
+'average_levenshtein_similarity': 0.19154487555131322, \
+'average_jaccard_similarity': 0.044492837472662784, \
+'average_bleu_score': 0.00940852604646604 
