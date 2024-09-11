@@ -6,6 +6,7 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_ollama import ChatOllama, OllamaEmbeddings
+from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_community.document_loaders import CSVLoader
 from langchain_community.embeddings import FakeEmbeddings
 from more_itertools import chunked
@@ -17,7 +18,10 @@ def _get_embeddings(embed_name='',
                    is_embed_fake=False):
     if is_embed_fake:
         return FakeEmbeddings(size=300)
-    return OllamaEmbeddings(model=embed_name)
+    elif embed_name == 'nomic-embed-text:v1.5':
+        return OllamaEmbeddings(model=embed_name)
+    elif embed_name == 'ai-forever/rugpt3small_based_on_gpt2':
+        return HuggingFaceEmbeddings(model_name=embed_name)
 
 
 def _get_llm(llm_name: str, temperature=0.1):
@@ -56,13 +60,13 @@ def get_vectorestore(is_persist_dir,
     if is_persist_dir:
         chroma_collection = Chroma(
             collection_name='question_answer_collection',
-            embedding=embeddings,
+            embedding_function=embeddings,
             persist_directory=persist_dir_path,
         )
     else:
         chroma_collection = Chroma(
             collection_name='question_answer_collection',
-            embedding=embeddings,
+            embedding_function=embeddings,
         )
 
     documents = loader_train.load()

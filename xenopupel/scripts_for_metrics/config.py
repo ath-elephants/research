@@ -1,13 +1,14 @@
 config = {
     # Путь до трейна
-    'file_path': 'LK_modified_11_09_clean_more_than_3_train.csv',
+    'file_path': 'train_synthetic_no_aug.csv',
 
     # Модель
     'model_name': 'llama3.1:8b',
     'temperature': 0.05,
 
     # Эмбеддинги
-    'embed_name': 'nomic-embed-text:v1.5',
+    # 'embed_name': 'nomic-embed-text:v1.5',
+    'embed_name': 'ai-forever/rugpt3small_based_on_gpt2',
     'is_embed_fake': False,
 
     # Параметры ретривера
@@ -17,7 +18,7 @@ config = {
     'score_threshold': 0.6,  # для search_type == similarity_score_threshold
 
     # Сохранять вектора эмбеддингов?
-    'is_persist_dir' : False,
+    'is_persist_dir' : True,
     'persist_dir_path' : './vectorestore/',
 
     # Промпты
