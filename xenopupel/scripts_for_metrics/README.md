@@ -1,8 +1,15 @@
-## synth_no_aug, дефолтные параметры:
-'average_similarity_score': 0.5378277933070031, \
-'average_levenshtein_similarity': 0.5641647351233865, \
-'average_jaccard_similarity': 0.45478534600813675, \
-'average_bleu_score': 0.4343468795510984 
+# Метрики разных эмбедингов и генераторов
+
+## train_synthetic_no_aug, дефолтные параметры
+
+| LLM x Embeddings                              | Avg Similarity Score | Avg Levenshtein Similarity | Avg Jaccard Similarity | Avg BLEU Score |
+|------------------------------------------------------------|----------------------|----------------------------|------------------------|----------------|
+| **Случайные ответы**                                       | 0.1346               | 0.1865                     | 0.0419                 | 0.0074         |
+| **llama 3.1 8b** x **nomic-ai/nomic-embed-text-v1.5 137m** | 0.5378               | 0.5642                     | 0.4548                 | 0.4343         |
+| **llama 3.1 8b** x **sergeyzh/rubert-tiny-turbo 29.2m**    | 0.6374               | 0.6561                     | 0.5534                 | 0.5375         |
+| **llama 3.1 8b** x **Alibaba-NLP/gte-base-en-v1.5 137m**   | 0.6532               | 0.6708                     | 0.5743                 | 0.5614         |
+| **llama 3.1 8b** x **deepvk/USER-base 124m**               | 0.6768               | 0.6868                     | 0.5957                 | 0.5802         |
+| **llama 3.1 8b** x **ai-forever/ru-en-RoSBERTa 404m**      | 0.7237               | 0.7310                     | 0.6416                 | 0.6293         |
 
 ## Чистые данные, откинув <=3 классы
 
@@ -12,8 +19,7 @@
 | --------------- |-------------|
 | --------------- |-------------|
 
-
-## Случайные ответы:
+## Случайные ответы
 
 test_synthetic_no_aug.csv: \
 'average_similarity_score': 0.13457999885072489, \
@@ -25,4 +31,4 @@ test_synthetic_aug.csv: \
 'average_similarity_score': 0.13246022000712718, \
 'average_levenshtein_similarity': 0.19154487555131322, \
 'average_jaccard_similarity': 0.044492837472662784, \
-'average_bleu_score': 0.00940852604646604 
+'average_bleu_score': 0.00940852604646604

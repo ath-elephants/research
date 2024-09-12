@@ -8,7 +8,10 @@ config = {
 
     # Эмбеддинги
     # 'embed_name': 'nomic-embed-text:v1.5',
-    'embed_name': 'ai-forever/rugpt3small_based_on_gpt2',
+    # 'embed_name': 'sergeyzh/rubert-tiny-turbo',
+    # 'embed_name': 'Alibaba-NLP/gte-base-en-v1.5',
+    # 'embed_name': 'deepvk/USER-base',
+    'embed_name': 'ai-forever/ru-en-RoSBERTa',
     'is_embed_fake': False,
 
     # Параметры ретривера

@@ -2,26 +2,37 @@ from langchain.chains import create_history_aware_retriever, create_retrieval_ch
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_chroma import Chroma
 from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_community.document_loaders import CSVLoader
+from langchain_community.embeddings import FakeEmbeddings
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
-from langchain_community.document_loaders import CSVLoader
-from langchain_community.embeddings import FakeEmbeddings
+from langchain_ollama import ChatOllama, OllamaEmbeddings
 from more_itertools import chunked
 
 global_store = {}
 
 
-def _get_embeddings(embed_name='',
-                   is_embed_fake=False):
+def _get_embeddings(embed_name='', is_embed_fake=False):
     if is_embed_fake:
         return FakeEmbeddings(size=300)
-    elif embed_name == 'nomic-embed-text:v1.5':
+
+    if embed_name == 'nomic-embed-text:v1.5':
         return OllamaEmbeddings(model=embed_name)
-    elif embed_name == 'ai-forever/rugpt3small_based_on_gpt2':
-        return HuggingFaceEmbeddings(model_name=embed_name)
+    elif embed_name in (
+        'sergeyzh/rubert-tiny-turbo',
+        'Alibaba-NLP/gte-base-en-v1.5',
+        'deepvk/USER-base',
+        'ai-forever/ru-en-RoSBERTa',
+    ):
+        model_kwargs = {'device': 'cuda', 'trust_remote_code': True}
+        encode_kwargs = {'normalize_embeddings': False}
+        return HuggingFaceEmbeddings(
+            model_name=embed_name,
+            model_kwargs=model_kwargs,
+            encode_kwargs=encode_kwargs,
+        )
 
 
 def _get_llm(llm_name: str, temperature=0.1):
@@ -53,10 +64,7 @@ def get_session_history(session_id: str) -> BaseChatMessageHistory:
     return global_store[session_id]
 
 
-def get_vectorestore(is_persist_dir,
-                     persist_dir_path,
-                     loader_train,
-                     embeddings):
+def get_vectorestore(is_persist_dir, persist_dir_path, loader_train, embeddings):
     if is_persist_dir:
         chroma_collection = Chroma(
             collection_name='question_answer_collection',
@@ -80,24 +88,26 @@ def get_vectorestore(is_persist_dir,
 
 
 def get_rag_chain(
-        model_name: str,
-        temperature: float,
-        embed_name: str,
-        file_path: str,
-        search_type: str,
-        k: int,
-        lambda_mult: float,
-        contextualize_q_system_prompt: str,
-        system_prompt: str,
-        persist_dir_path: str,
-        score_threshold=0.8,
-        is_persist_dir=False,
-        is_embed_fake=False,
+    model_name: str,
+    temperature: float,
+    embed_name: str,
+    file_path: str,
+    search_type: str,
+    k: int,
+    lambda_mult: float,
+    contextualize_q_system_prompt: str,
+    system_prompt: str,
+    persist_dir_path: str,
+    score_threshold=0.8,
+    is_persist_dir=False,
+    is_embed_fake=False,
 ) -> RunnableWithMessageHistory:
     loader_train = _get_loader(file_path)
     embeddings = _get_embeddings(embed_name, is_embed_fake=is_embed_fake)
     llm = _get_llm(model_name, temperature=temperature)
-    vectorstore = get_vectorestore(is_persist_dir, persist_dir_path, loader_train, embeddings)
+    vectorstore = get_vectorestore(
+        is_persist_dir, persist_dir_path, loader_train, embeddings
+    )
     search_kwargs = {}
     if search_type == 'mmr':
         search_kwargs = {'k': k, 'lambda_mult': lambda_mult}
@@ -123,5 +133,3 @@ def get_rag_chain(
         history_messages_key='chat_history',
         output_messages_key='answer',
     )
-
-
