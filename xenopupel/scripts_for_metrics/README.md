@@ -2,14 +2,15 @@
 
 ## train_synthetic_no_aug, дефолтные параметры
 
-| LLM x Embeddings                              | Avg Similarity Score | Avg Levenshtein Similarity | Avg Jaccard Similarity | Avg BLEU Score |
-|------------------------------------------------------------|----------------------|----------------------------|------------------------|----------------|
-| **Случайные ответы**                                       | 0.1346               | 0.1865                     | 0.0419                 | 0.0074         |
-| **llama 3.1 8b** x **nomic-ai/nomic-embed-text-v1.5 137m** | 0.5378               | 0.5642                     | 0.4548                 | 0.4343         |
-| **llama 3.1 8b** x **sergeyzh/rubert-tiny-turbo 29.2m**    | 0.6374               | 0.6561                     | 0.5534                 | 0.5375         |
-| **llama 3.1 8b** x **Alibaba-NLP/gte-base-en-v1.5 137m**   | 0.6532               | 0.6708                     | 0.5743                 | 0.5614         |
-| **llama 3.1 8b** x **deepvk/USER-base 124m**               | 0.6768               | 0.6868                     | 0.5957                 | 0.5802         |
-| **llama 3.1 8b** x **ai-forever/ru-en-RoSBERTa 404m**      | 0.7237               | 0.7310                     | 0.6416                 | 0.6293         |
+| LLM x Embeddings                                  | Avg Similarity Score | Avg Levenshtein Similarity | Avg Jaccard Similarity | Avg BLEU Score |
+|---------------------------------------------------|----------------------|----------------------------|------------------------|----------------|
+| **Случайные ответы**                              | 0.1346               | 0.1865                     | 0.0419                 | 0.0074         |
+| **llama 3.1 8b** x **nomic-embed-text-v1.5 137m** | 0.5378               | 0.5642                     | 0.4548                 | 0.4343         |
+| **llama 3.1 8b** x **rubert-tiny-turbo 29.2m**    | 0.6374               | 0.6561                     | 0.5534                 | 0.5375         |
+| **llama 3.1 8b** x **gte-base-en-v1.5 137m**      | 0.6532               | 0.6708                     | 0.5743                 | 0.5614         |
+| **llama 3.1 8b** x **USER-base 124m**             | 0.6768               | 0.6868                     | 0.5957                 | 0.5802         |
+| **llama 3.1 8b** x **ru-en-RoSBERTa 404m**        | 0.7237               | 0.7310                     | 0.6416                 | 0.6293         |
+| **gemma2 9b** x **ru-en-RoSBERTa 404m**           | 0.6810               | 0.6817                     | 0.6409                 | 0.6150         |
 
 ## Чистые данные, откинув <=3 классы
 
